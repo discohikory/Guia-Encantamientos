@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Guía de encantamientos Minecraft: qué hace cada uno, nivel máximo, incompatibilidades y armador de sets.">
+<title>Guía de Encantamientos — Discohikorybrs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<script src="https://js.puter.com/v2/"></script>
+<style>
+:root{--bg:#04060d;--panel:rgba(15,20,35,.55);--line:rgba(139,92,246,.2);--text:#f5f7ff;--muted:#9da8c5;--a:#8b5cf6;--cy:#67e8f9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,sans-serif;line-height:1.6}
+.bg-grid{position:fixed;inset:0;z-index:-2;opacity:.14;background-image:linear-gradient(#293354 1px,transparent 1px),linear-gradient(90deg,#293354 1px,transparent 1px);background-size:44px 44px}
+.glow{position:fixed;border-radius:50%;filter:blur(100px);z-index:-1;pointer-events:none;opacity:.5}
+.glow.g1{width:420px;height:420px;top:-120px;right:-100px;background:rgba(139,92,246,.25);animation:drift 16s ease-in-out infinite alternate}
+.glow.g2{width:380px;height:380px;bottom:-120px;left:-80px;background:rgba(103,232,249,.12);animation:drift 20s ease-in-out infinite alternate-reverse}
+@keyframes drift{to{transform:translate(-40px,50px)}}
+header{max-width:1120px;margin:auto;padding:20px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:50;background:rgba(4,6,13,.8);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.brand{font:700 16px 'Space Grotesk';color:#fff;text-decoration:none}
+.back{color:#b39aff;text-decoration:none;font-size:13px;border:1px solid var(--line);padding:8px 14px;border-radius:8px}
+.back:hover{border-color:var(--a)}
+main{max-width:1120px;margin:auto;padding:24px}
+.hero-t{text-align:center;padding:28px 0 8px}
+.hero-t h1{font:700 clamp(28px,4.5vw,46px) 'Space Grotesk';margin:10px 0;background:linear-gradient(90deg,#fff 25%,#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(139,92,246,.35))}
+.eyebrow{color:var(--cy);font-size:10px;font-family:'Press Start 2P',monospace;letter-spacing:2px}
+.lead{color:var(--muted);max-width:680px;margin:0 auto}
+.searchbar{display:flex;gap:10px;max-width:640px;margin:24px auto;flex-wrap:wrap;justify-content:center}
+.searchbar input{flex:1;min-width:220px}
+input,select{font-family:inherit;color:#fff;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px;outline:none;font-size:14px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+.chip{padding:8px 16px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.03);color:var(--muted);font-size:12px;font-weight:700;cursor:pointer}
+.chip.active,.chip:hover{color:#fff;border-color:var(--cy);box-shadow:0 4px 16px rgba(103,232,249,.2)}
+.glass{background:var(--panel);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:15px;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.card{padding:20px;margin-bottom:14px;transition:transform .3s ease,border-color .3s ease}
+.card:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.4)}
+h2.st{font:700 20px 'Space Grotesk';margin:0 0 4px}
+.muted{color:var(--muted);font-size:13px}
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid var(--cy);color:var(--cy);margin:2px 4px 2px 0}
+.pill.warn{border-color:#f87171;color:#f87171}
+.lvl{font-family:monospace;color:#fcd34d}
+.rowbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{padding:10px 18px;border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:700;color:#fff;background:rgba(255,255,255,.04);cursor:pointer}
+.btn:hover{border-color:var(--cy)}
+.primary{background:linear-gradient(#9d6bff,#6d28d9);border:2px solid #141414;border-radius:4px}
+.primary:hover{filter:brightness(1.12)}
+pre.tpl{white-space:pre-wrap;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px;font-size:13px;font-family:inherit}
+.ai-slot{margin-top:10px}.ai-slot:empty{display:none}
+.setgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:12px 0}
+.setitem{display:flex;gap:8px;align-items:center;font-size:13px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;cursor:pointer}
+.setitem.on{border-color:var(--cy);background:rgba(103,232,249,.07)}
+.setitem.conflict{border-color:#f87171;background:rgba(248,113,113,.07)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tips li{margin-bottom:8px;font-size:13px;color:var(--muted)}
+.tips b{color:#fff}
+footer{text-align:center;padding:34px 20px;color:var(--muted);font-size:12px;border-top:1px solid rgba(255,255,255,.06);margin-top:30px}
+footer strong{color:#fff}
+.visits{margin-top:10px;font-size:13px;color:var(--muted)}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.glow{animation:none !important}}
+</style>
+</head>
+<body>
+<div class="bg-grid" aria-hidden="true"></div><div class="glow g1" aria-hidden="true"></div><div class="glow g2" aria-hidden="true"></div>
+<header>
+  <a class="back" href="https://discohikory.github.io/Portafolio/">← Portafolio</a>
+  <a class="brand" href="#">🔮 Guía de Encantamientos</a>
+</header>
+<main>
+  <div class="hero-t">
+    <p class="eyebrow">ENCANTAMIENTOS · JAVA EDITION</p>
+    <h1>Guía de Encantamientos</h1>
+    <p class="lead">Qué hace cada encantamiento, su nivel máximo, con qué choca y los mejores combos. Arma tu set perfecto abajo.</p>
+  </div>
+  <div class="searchbar">
+    <input id="q" maxlength="60" placeholder="Buscar (ej. fortuna, arco, protección…)">
+    <select id="cat"><option value="">Todo</option></select>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div id="list"></div>
+  <div class="card glass" style="margin-top:22px">
+    <h2 class="st">⚔️ Arma tu set</h2>
+    <p class="muted">Elige el item, marca encantamientos y detecta choques antes de gastar niveles.</p>
+    <select id="setItem" style="max-width:320px"></select>
+    <div class="setgrid" id="setGrid"></div>
+    <div id="setWarn"></div>
+    <h2 class="st">📜 Tu set</h2>
+    <pre class="tpl" id="setOut">Elige un item para empezar…</pre>
+    <div class="rowbtns"><button type="button" class="btn primary" id="setCopy">Copiar set 📋</button></div>
+  </div>
+  <div class="card glass" style="margin-top:18px">
+    <h2 class="st">🎓 Tips de yunque y mesa</h2>
+    <ul class="tips">
+      <li><b>Reparación</b> es de tesoro: no sale en mesa. Búscala pescando, en aldeanos libreros o en el End.</li>
+      <li><b>Orden barato:</b> combina primero los libros entre sí y deja el item para el final.</li>
+      <li><b>Toque de seda + Fortuna</b> no combinan: un pico para cada uno.</li>
+      <li><b>Infinidad + Reparación</b> en el arco son excluyentes: elige según uses flechas o XP.</li>
+      <li><b>Filo, Castigo y Perdición</b> son excluyentes: Filo para todo, Castigo para wither/esqueletos, Perdición para arañas.</li>
+    </ul>
+  </div>
+</main>
+<section style="max-width:1120px;margin:6px auto 0;padding:0 24px">
+  <div class="card glass">
+    <h2 class="st">🚀 Mis proyectos</h2>
+    <div class="grid2">
+      <div><h3 style="margin:6px 0">Portfolio principal</h3><div class="rowbtns"><a class="btn" href="https://discohikory.github.io/Portafolio/">Abrir portafolio ↗</a></div></div>
+      <div><h3 style="margin:6px 0">Staff Toolkit</h3><div class="rowbtns"><a class="btn" href="https://discohikory.github.io/Staff-Toolkit/">Abrir toolkit ↗</a></div></div>
+      <div><h3 style="margin:6px 0">Wiki de Comandos</h3><div class="rowbtns"><a class="btn" href="https://discohikory.github.io/Wiki-Comandos/">Abrir wiki ↗</a></div></div>
+      <div><h3 style="margin:6px 0">Quiz Staff</h3><div class="rowbtns"><a class="btn" href="https://discohikory.github.io/Quiz-Staff/">Jugar quiz ↗</a></div></div>
+      <div><h3 style="margin:6px 0">Status en vivo</h3><div class="rowbtns"><a class="btn" href="https://discohikory.github.io/Server-Status/">Abrir monitor ↗</a></div></div>
+    </div>
+  </div>
+</section>
+<footer>© 2026 Daniel Esteban Vera Fernandez · <strong>Discohikorybrs</strong> · Todos los derechos reservados.<br><small>Guía con fines educativos. Hecho con ⛏️</small><div class="visits">👁 <span id="visitCount">…</span> visitas</div></footer>
+<script>
+const ENCH=[
+ {id:"proteccion",n:"Protección",max:"IV",c:"Armadura",para:"Casco, pechera, pantalones y botas",d:"Reduce todo el daño recibido.",inc:["fuego","proyectil","explosion"]},
+ {id:"fuego",n:"Protección contra el fuego",max:"IV",c:"Armadura",para:"Las 4 piezas",d:"Reduce daño de fuego y lava. No evita quemarte.",inc:["proteccion","proyectil","explosion"]},
+ {id:"proyectil",n:"Protección contra proyectiles",max:"IV",c:"Armadura",para:"Las 4 piezas",d:"Reduce daño de flechas, tridentes y ghasts.",inc:["proteccion","fuego","explosion"]},
+ {id:"explosion",n:"Protección contra explosiones",max:"IV",c:"Armadura",para:"Las 4 piezas",d:"Reduce daño de TNT, creepers y camas.",inc:["proteccion","fuego","proyectil"]},
+ {id:"respiracion",n:"Respiración",max:"III",c:"Casco",para:"Casco",d:"Más tiempo bajo el agua y menos daño por ahogo.",inc:[]},
+ {id:"afinidad",n:"Afinidad acuática",max:"I",c:"Casco",para:"Casco",d:"Minar rápido bajo el agua.",inc:[]},
+ {id:"espinas",n:"Espinas",max:"III",c:"Armadura",para:"Las 4 piezas",d:"Devuelve daño al atacante. Gasta durabilidad extra.",inc:[]},
+ {id:"caida",n:"Caída de pluma",max:"IV",c:"Botas",para:"Botas",d:"Reduce el daño por caída (no el del vacío).",inc:[]},
+ {id:"hielo",n:"Paso helado",max:"II",c:"Botas",para:"Botas",d:"Congela el agua al caminar. Ojo: derrite cerca de antorchas.",inc:[]},
+ {id:"almas",n:"Velocidad del alma",max:"III",c:"Botas",para:"Botas",d:"Corre rápido en arena de almas. Solo de tesoro.",inc:[]},
+ {id:"agilidad",n:"Agilidad acuática",max:"III",c:"Botas",para:"Botas",d:"Nadar y caminar rápido bajo el agua.",inc:[]},
+ {id:"filo",n:"Filo",max:"V",c:"Espada",para:"Espada",d:"Más daño contra todo. El comodín del combate.",inc:["castigo","perdicion"]},
+ {id:"castigo",n:"Castigo",max:"V",c:"Espada",para:"Espada",d:"Daño extra contra no-muertos (zombis, esqueletos, wither).",inc:["filo","perdicion"]},
+ {id:"perdicion",n:"Perdición de los artrópodos",max:"V",c:"Espada",para:"Espada",d:"Daño extra contra arañas, abejas y silverfish.",inc:["filo","castigo"]},
+ {id:"fuegoesp",n:"Aspecto ígneo",max:"II",c:"Espada",para:"Espada",d:"Prende fuego al golpear. Cocina la carne directo.",inc:[]},
+ {id:"empuje",n:"Empuje",max:"II",c:"Espada",para:"Espada",d:"Lanza lejos al enemigo. Ideal contra creepers.",inc:[]},
+ {id:"saqueo",n:"Saqueo",max:"III",c:"Espada",para:"Espada",d:"Más drops de mobs y más probabilidad de cabezas.",inc:[]},
+ {id:"barrido",n:"Barrido",max:"III",c:"Espada",para:"Espada (Java)",d:"El ataque cargado pega en área.",inc:[]},
+ {id:"eficiencia",n:"Eficiencia",max:"V",c:"Herramientas",para:"Pico, hacha, pala, tijeras",d:"Rompe bloques mucho más rápido.",inc:[]},
+ {id:"fortuna",n:"Fortuna",max:"III",c:"Herramientas",para:"Pico, hacha, pala",d:"Multiplica drops (diamantes, carbón). No funciona en hierro/oro sin fundir.",inc:["seda"]},
+ {id:"seda",n:"Toque de seda",max:"I",c:"Herramientas",para:"Pico, hacha, pala",d:"Recoge el bloque tal cual (menas, cristal, micelio).",inc:["fortuna"]},
+ {id:"poder",n:"Poder",max:"V",c:"Arco",para:"Arco",d:"Mucho más daño por flecha.",inc:[]},
+ {id:"punch",n:"Puñetazo",max:"II",c:"Arco",para:"Arco",d:"Empuja al objetivo hacia atrás.",inc:[]},
+ {id:"llama",n:"Llama",max:"I",c:"Arco",para:"Arco",d:"Flechas incendiarias.",inc:[]},
+ {id:"infinidad",n:"Infinidad",max:"I",c:"Arco",para:"Arco",d:"Flechas infinitas con 1 en inventario. Solo de tesoro.",inc:["reparacion"]},
+ {id:"multi",n:"Multidisparo",max:"I",c:"Ballesta",para:"Ballesta",d:"Dispara 3 flechas a la vez. Solo de tesoro.",inc:["perforacion"]},
+ {id:"perforacion",n:"Perforación",max:"IV",c:"Ballesta",para:"Ballesta",d:"La flecha atraviesa varios enemigos.",inc:["multi"]},
+ {id:"carga",n:"Carga rápida",max:"III",c:"Ballesta",para:"Ballesta",d:"Recarga la ballesta más veloz.",inc:[]},
+ {id:"lealtad",n:"Lealtad",max:"III",c:"Tridente",para:"Tridente",d:"El tridente vuelve a tu mano al lanzarlo.",inc:[]},
+ {id:"canal",n:"Canalización",max:"I",c:"Tridente",para:"Tridente",d:"Invoca rayos en tormenta al impactar. Solo de tesoro.",inc:[]},
+ {id:"propulsion",n:"Propulsión acuática",max:"III",c:"Tridente",para:"Tridente",d:"Te impulsa al lanzarlo en agua o lluvia.",inc:[]},
+ {id:"empalar",n:"Empalamiento",max:"V",c:"Tridente",para:"Tridente",d:"Daño extra contra bichos acuáticos.",inc:[]},
+ {id:"suerte",n:"Suerte marina",max:"III",c:"Pesca",para:"Caña de pescar",d:"Mejor botín pescando (libros, arcos, tesoros).",inc:[]},
+ {id:"senuelo",n:"Señuelo",max:"III",c:"Pesca",para:"Caña de pescar",d:"Los peces pican más rápido.",inc:[]},
+ {id:"irrompible",n:"Irrompible",max:"III",c:"General",para:"Casi todo",d:"La durabilidad rinde mucho más.",inc:[]},
+ {id:"reparacion",n:"Reparación",max:"I",c:"General",para:"Casi todo",d:"Repara con orbes de XP. De tesoro; choca con Infinidad.",inc:["infinidad"]},
+ {id:"vanish",n:"Maldición de desaparición",max:"I",c:"Maldición",para:"Casi todo",d:"Al morir, el item desaparece. Evítala.",inc:[]},
+ {id:"atadura",n:"Maldición de atadura",max:"I",c:"Maldición",para:"Armadura",d:"No te puedes quitar la pieza. Evítala.",inc:[]}
+];
+const NAMES={proteccion:"Protección",fuego:"Fuego",proyectil:"Proyectiles",explosion:"Explosiones",castigo:"Castigo",perdicion:"Perdición",filo:"Filo",reparacion:"Reparación",infinidad:"Infinidad",fortuna:"Fortuna",seda:"Toque de seda",multi:"Multidisparo",perforacion:"Perforación"};
+const ITEMS={"Espada":["filo","castigo","perdicion","fuegoesp","empuje","saqueo","barrido","irrompible","reparacion"],"Pico":["eficiencia","fortuna","seda","irrompible","reparacion"],"Hacha":["eficiencia","fortuna","seda","irrompible","reparacion"],"Arco":["poder","punch","llama","infinidad","irrompible","reparacion"],"Ballesta":["multi","perforacion","carga","irrompible","reparacion"],"Tridente":["lealtad","canal","propulsion","empalar","irrompible","reparacion"],"Armadura completa":["proteccion","fuego","proyectil","explosion","irrompible","reparacion"],"Botas voladoras":["caida","hielo","almas","agilidad","proteccion","irrompible","reparacion"],"Casco de minero":["respiracion","afinidad","proteccion","irrompible","reparacion"],"Caña pro":["suerte","senuelo","irrompible","reparacion"]};
+const BEST={Espada:["filo","saqueo","fuegoesp","empuje","irrompible","reparacion"],Pico:["eficiencia","fortuna","irrompible","reparacion"],Hacha:["eficiencia","fortuna","irrompible","reparacion"],Arco:["poder","punch","llama","irrompible","reparacion"],"Armadura completa":["proteccion","irrompible","reparacion"]};
+const esc=v=>{const d=document.createElement('div');d.textContent=v==null?"":v;return d.innerHTML};
+const cats=["","Armadura","Casco","Botas","Espada","Herramientas","Arco","Ballesta","Tridente","Pesca","General","Maldición"];
+const catSel=document.getElementById('cat'),chips=document.getElementById('chips'),q=document.getElementById('q'),list=document.getElementById('list');
+cats.slice(1).forEach(c=>{const o=document.createElement('option');o.value=o.textContent=c;catSel.appendChild(o)});
+let activeChip="";
+function paintChips(){
+  chips.innerHTML='<button class="chip'+(activeChip===""?" active":"")+'" data-chip="">Todos</button>'+cats.slice(1).map(c=>`<button class="chip${activeChip===c?" active":""}" data-chip="${esc(c)}">${esc(c)}</button>`).join('');
+  chips.querySelectorAll('[data-chip]').forEach(b=>b.addEventListener('click',()=>{activeChip=b.dataset.chip;catSel.value=activeChip;paintChips();paint()}));
+}
+catSel.addEventListener('change',()=>{activeChip=catSel.value;paintChips();paint()});
+q.addEventListener('input',paint);
+function paint(){
+  const term=q.value.trim().toLowerCase();
+  const items=ENCH.map((c,i)=>({...c,i})).filter(c=>
+    (!activeChip||c.c===activeChip)&&
+    (!term||(c.n+" "+c.para+" "+c.d).toLowerCase().includes(term)));
+  list.innerHTML=items.length?items.map(c=>`<div class="card glass"><div><span class="pill">${esc(c.c)}</span><span class="lvl">Nv. máx ${esc(c.max)}</span></div>
+    <h2 class="st" style="margin-top:8px">${esc(c.n)}</h2>
+    <p class="muted">Para: <b>${esc(c.para)}</b></p><p>${esc(c.d)}</p>
+    ${c.inc.length?`<p>${c.inc.map(k=>`<span class="pill warn">⛔ ${esc(NAMES[k]||k)}</span>`).join('')}</p>`:'<p class="muted">Sin choques. ✅</p>'}
+    <div class="rowbtns"><button type="button" class="btn" data-cp="${c.i}">Copiar 📋</button><button type="button" class="btn" data-ai="${c.i}">✨ Explicar con IA</button></div>
+    <div class="ai-slot" id="ai-${c.i}"></div></div>`).join('')
+    :'<div class="card glass"><p class="muted">Sin resultados. Prueba con "arco", "reparación" o "tridente".</p></div>';
+}
+function aiExtract(r){if(!r)return"";if(typeof r==="string")return r;const m=r.message&&r.message.content;if(typeof m==="string")return m;if(Array.isArray(m))return m.map(p=>typeof p==="string"?p:(p.text||"")).join("");return r.text||r.output||""}
+async function aiChat(prompt){
+  try{if(window.puter&&puter.ai&&puter.ai.chat){const t=aiExtract(await puter.ai.chat(prompt));if(t&&t.trim())return{text:t.trim(),via:"Puter.js"}}}catch(e){console.warn(e)}
+  const res=await fetch("https://text.pollinations.ai/"+encodeURIComponent(prompt));
+  if(!res.ok)throw new Error("HTTP "+res.status);
+  const t=(await res.text()).trim();if(!t)throw new Error("vacío");
+  return{text:t,via:"Pollinations"};
+}
+async function copyText(t){try{await navigator.clipboard.writeText(t);alert('¡Copiado! 📋')}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');alert('¡Copiado! 📋')}catch(_){alert('No se pudo copiar.')}ta.remove()}}
+document.addEventListener('click',e=>{
+  if(!e.target.closest)return;
+  const qq=s=>e.target.closest(s);
+  let b;
+  if(b=qq('[data-cp]')){const c=ENCH[Number(b.dataset.cp)];copyText(`${c.n} ${c.max} — ${c.para}: ${c.d}`);return}
+  if(b=qq('[data-ai]')){
+    const c=ENCH[Number(b.dataset.ai)];
+    const slot=document.getElementById('ai-'+b.dataset.ai);
+    slot.innerHTML='<small class="muted">Generando con IA… ⏳</small>';b.disabled=true;
+    aiChat(`Explica de forma breve y práctica (máximo 90 palabras, español neutro) el encantamiento de Minecraft "${c.n}" (nivel máximo ${c.max}, para: ${c.para}). Qué hace, cuándo conviene y 1 tip de uso.`).then(r=>{
+      slot.innerHTML=`<pre class="tpl ai-pre"></pre><small class="muted">Vía ${r.via} 🤖</small>`;
+      slot.querySelector('.ai-pre').textContent=r.text;
+    }).catch(()=>{slot.innerHTML='<small class="muted">La IA no responde ahora. Intenta luego. ⚠️</small>'}).finally(()=>{b.disabled=false});
+    return;
+  }
+});
+const setItem=document.getElementById('setItem'),setGrid=document.getElementById('setGrid'),setWarn=document.getElementById('setWarn'),setOut=document.getElementById('setOut');
+Object.keys(ITEMS).forEach(k=>{const o=document.createElement('option');o.value=o.textContent=k;setItem.appendChild(o)});
+let setSel=new Set();
+function paintSet(){
+  const ids=ITEMS[setItem.value]||[];
+  setGrid.innerHTML=ids.map(id=>{
+    const c=ENCH.find(x=>x.id===id);
+    return `<div class="setitem${setSel.has(id)?' on':''}" data-set="${id}"><span>${setSel.has(id)?'✅':'⬜'}</span><span><b>${esc(c.n)}</b> <small class="muted">${esc(c.max)}</small></span></div>`;
+  }).join('');
+  const sel=[...setSel].filter(id=>ids.includes(id));
+  const byId={};ENCH.forEach(x=>byId[x.id]=x);
+  const bad=[];
+  sel.forEach(id=>{(byId[id].inc||[]).forEach(k=>{if(sel.includes(k))bad.push([id,k])})});
+  setWarn.innerHTML=bad.length?bad.map(p=>`<p class="muted" style="color:#fca5a5">⛔ Choque: ${esc(byId[p[0]].n)} + ${esc(byId[p[1]].n)} (excluyentes)</p>`).join(''):(sel.length?'<p class="muted">Sin choques. ✅</p>':'');
+  setOut.textContent=sel.length?('Set '+setItem.value+':\n'+sel.map(id=>`• ${byId[id].n} ${byId[id].max}`).join('\n')):'Elige encantamientos arriba…';
+}
+setItem.addEventListener('change',()=>{setSel=new Set(BEST[setItem.value]||[]);paintSet()});
+setGrid.addEventListener('click',e=>{
+  const t=e.target.closest?e.target.closest('[data-set]'):null;
+  if(!t)return;
+  const id=t.dataset.set;
+  if(setSel.has(id))setSel.delete(id);else setSel.add(id);
+  paintSet();
+});
+document.getElementById('setCopy').addEventListener('click',()=>copyText(document.getElementById('setOut').textContent));
+setSel=new Set(BEST[setItem.value]||[]);
+paintChips();paint();paintSet();
+(function(){
+  var el=document.getElementById('visitCount');
+  if(!el)return;
+  function fmt(n){n=Number(n)||0;return n>=1000?(n/1000).toFixed(1).replace('.',',').replace(',0','')+' mil':String(n)}
+  fetch('https://api.jsonbin.io/v3/b/6aac6a86ffd5d1605313c161/latest',{headers:{'X-Access-Key':'$2a$10$XbVd43wzBhlIfE1632782ePKNz5e/MaX25U3NJ5JRIBKtJt0ILnXC'}})
+  .then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+    var v=(j.record&&j.record.visits)||{};
+    v.guia=(v.guia||0)+1;
+    el.textContent=fmt(v.guia);
+    fetch('https://api.jsonbin.io/v3/b/6aac6a86ffd5d1605313c161',{method:'PUT',headers:{'Content-Type':'application/json','X-Access-Key':'$2a$10$XbVd43wzBhlIfE1632782ePKNz5e/MaX25U3NJ5JRIBKtJt0ILnXC','X-Bin-Versioning':'false'},body:JSON.stringify({visits:v})}).catch(function(){});
+  }).catch(function(){el.textContent='—'});
+})();
+</script>
+</body>
+</html>
