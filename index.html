@@ -126,6 +126,7 @@ const ENCH=[
  {id:"hielo",n:"Paso helado",max:"II",c:"Botas",para:"Botas",d:"Congela el agua al caminar. Ojo: derrite cerca de antorchas.",inc:[]},
  {id:"almas",n:"Velocidad del alma",max:"III",c:"Botas",para:"Botas",d:"Corre rápido en arena de almas. Solo de tesoro.",inc:[]},
  {id:"agilidad",n:"Agilidad acuática",max:"III",c:"Botas",para:"Botas",d:"Nadar y caminar rápido bajo el agua.",inc:[]},
+ {id:"sigilo",n:"Sigilo raudo",max:"III",c:"Pantalones",para:"Pantalones",d:"Agachado te mueves rapidísimo. Solo en Ancient Cities.",inc:[]},
  {id:"filo",n:"Filo",max:"V",c:"Espada",para:"Espada",d:"Más daño contra todo. El comodín del combate.",inc:["castigo","perdicion"]},
  {id:"castigo",n:"Castigo",max:"V",c:"Espada",para:"Espada",d:"Daño extra contra no-muertos (zombis, esqueletos, wither).",inc:["filo","perdicion"]},
  {id:"perdicion",n:"Perdición de los artrópodos",max:"V",c:"Espada",para:"Espada",d:"Daño extra contra arañas, abejas y silverfish.",inc:["filo","castigo"]},
@@ -147,6 +148,9 @@ const ENCH=[
  {id:"canal",n:"Canalización",max:"I",c:"Tridente",para:"Tridente",d:"Invoca rayos en tormenta al impactar. Solo de tesoro.",inc:[]},
  {id:"propulsion",n:"Propulsión acuática",max:"III",c:"Tridente",para:"Tridente",d:"Te impulsa al lanzarlo en agua o lluvia.",inc:[]},
  {id:"empalar",n:"Empalamiento",max:"V",c:"Tridente",para:"Tridente",d:"Daño extra contra bichos acuáticos.",inc:[]},
+ {id:"densidad",n:"Densidad",max:"V",c:"Maza",para:"Maza",d:"Más daño al caer desde alto. Solo en Trial Chambers.",inc:["brecha"]},
+ {id:"brecha",n:"Brecha",max:"IV",c:"Maza",para:"Maza",d:"Baja la armadura del enemigo. Solo en Trial Chambers.",inc:["densidad"]},
+ {id:"rafaga",n:"Ráfaga",max:"III",c:"Maza",para:"Maza",d:"Al golpear te lanza arriba para encadenar. Solo en Trial Chambers.",inc:[]},
  {id:"suerte",n:"Suerte marina",max:"III",c:"Pesca",para:"Caña de pescar",d:"Mejor botín pescando (libros, arcos, tesoros).",inc:[]},
  {id:"senuelo",n:"Señuelo",max:"III",c:"Pesca",para:"Caña de pescar",d:"Los peces pican más rápido.",inc:[]},
  {id:"irrompible",n:"Irrompible",max:"III",c:"General",para:"Casi todo",d:"La durabilidad rinde mucho más.",inc:[]},
@@ -154,11 +158,11 @@ const ENCH=[
  {id:"vanish",n:"Maldición de desaparición",max:"I",c:"Maldición",para:"Casi todo",d:"Al morir, el item desaparece. Evítala.",inc:[]},
  {id:"atadura",n:"Maldición de atadura",max:"I",c:"Maldición",para:"Armadura",d:"No te puedes quitar la pieza. Evítala.",inc:[]}
 ];
-const NAMES={proteccion:"Protección",fuego:"Fuego",proyectil:"Proyectiles",explosion:"Explosiones",castigo:"Castigo",perdicion:"Perdición",filo:"Filo",reparacion:"Reparación",infinidad:"Infinidad",fortuna:"Fortuna",seda:"Toque de seda",multi:"Multidisparo",perforacion:"Perforación"};
-const ITEMS={"Espada":["filo","castigo","perdicion","fuegoesp","empuje","saqueo","barrido","irrompible","reparacion"],"Pico":["eficiencia","fortuna","seda","irrompible","reparacion"],"Hacha":["eficiencia","fortuna","seda","irrompible","reparacion"],"Arco":["poder","punch","llama","infinidad","irrompible","reparacion"],"Ballesta":["multi","perforacion","carga","irrompible","reparacion"],"Tridente":["lealtad","canal","propulsion","empalar","irrompible","reparacion"],"Armadura completa":["proteccion","fuego","proyectil","explosion","irrompible","reparacion"],"Botas voladoras":["caida","hielo","almas","agilidad","proteccion","irrompible","reparacion"],"Casco de minero":["respiracion","afinidad","proteccion","irrompible","reparacion"],"Caña pro":["suerte","senuelo","irrompible","reparacion"]};
-const BEST={Espada:["filo","saqueo","fuegoesp","empuje","irrompible","reparacion"],Pico:["eficiencia","fortuna","irrompible","reparacion"],Hacha:["eficiencia","fortuna","irrompible","reparacion"],Arco:["poder","punch","llama","irrompible","reparacion"],"Armadura completa":["proteccion","irrompible","reparacion"]};
+const NAMES={proteccion:"Protección",fuego:"Fuego",proyectil:"Proyectiles",explosion:"Explosiones",castigo:"Castigo",perdicion:"Perdición",filo:"Filo",reparacion:"Reparación",infinidad:"Infinidad",fortuna:"Fortuna",seda:"Toque de seda",multi:"Multidisparo",perforacion:"Perforación",densidad:"Densidad",brecha:"Brecha"};
+const ITEMS={"Espada":["filo","castigo","perdicion","fuegoesp","empuje","saqueo","barrido","irrompible","reparacion"],"Maza":["densidad","brecha","rafaga","irrompible","reparacion"],"Pico":["eficiencia","fortuna","seda","irrompible","reparacion"],"Hacha":["eficiencia","fortuna","seda","irrompible","reparacion"],"Arco":["poder","punch","llama","infinidad","irrompible","reparacion"],"Ballesta":["multi","perforacion","carga","irrompible","reparacion"],"Tridente":["lealtad","canal","propulsion","empalar","irrompible","reparacion"],"Armadura completa":["proteccion","fuego","proyectil","explosion","irrompible","reparacion"],"Botas voladoras":["caida","hielo","almas","agilidad","proteccion","irrompible","reparacion"],"Casco de minero":["respiracion","afinidad","proteccion","irrompible","reparacion"],"Caña pro":["suerte","senuelo","irrompible","reparacion"]};
+const BEST={Espada:["filo","saqueo","fuegoesp","empuje","irrompible","reparacion"],Maza:["densidad","rafaga","irrompible","reparacion"],Pico:["eficiencia","fortuna","irrompible","reparacion"],Hacha:["eficiencia","fortuna","irrompible","reparacion"],Arco:["poder","punch","llama","irrompible","reparacion"],"Armadura completa":["proteccion","irrompible","reparacion"]};
 const esc=v=>{const d=document.createElement('div');d.textContent=v==null?"":v;return d.innerHTML};
-const cats=["","Armadura","Casco","Botas","Espada","Herramientas","Arco","Ballesta","Tridente","Pesca","General","Maldición"];
+const cats=["","Armadura","Casco","Botas","Pantalones","Espada","Maza","Herramientas","Arco","Ballesta","Tridente","Pesca","General","Maldición"];
 const catSel=document.getElementById('cat'),chips=document.getElementById('chips'),q=document.getElementById('q'),list=document.getElementById('list');
 cats.slice(1).forEach(c=>{const o=document.createElement('option');o.value=o.textContent=c;catSel.appendChild(o)});
 let activeChip="";
